@@ -1,7 +1,6 @@
 package terms.concept;
 
 import terms.Term;
-import terms.property.ComparativeProperty;
 
 /**
  * ionutciuta24@gmail.com on 16.12.2017.
@@ -37,5 +36,10 @@ public class Concept extends Term {
 
     private void setNegated() {
         this.negated = true;
+    }
+
+    @Override
+    public String toString() {
+        return negated ? ("~" + getName()) : getName();
     }
 }

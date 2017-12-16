@@ -67,4 +67,9 @@ public class Definition {
     private void set2ndTerm(Term t2) {
         this.t2 = t2;
     }
+
+    @Override
+    public String toString() {
+        return t1.toString() + " " + connector + " " + t2.toString();
+    }
 }

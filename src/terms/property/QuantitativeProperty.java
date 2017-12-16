@@ -17,7 +17,7 @@ public class QuantitativeProperty extends Property {
             this.property = new QuantitativeProperty();
         }
 
-        public Builder name(String name) {
+        public Builder named(String name) {
             property.setName(name);
             return this;
         }
@@ -56,5 +56,10 @@ public class QuantitativeProperty extends Property {
 
     private void setArg(Concept arg) {
         this.arg = arg;
+    }
+
+    @Override
+    public String toString() {
+        return quantifier + " " + getName() + "." + arg.toString();
     }
 }

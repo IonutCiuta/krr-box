@@ -26,7 +26,7 @@ public class ComparativeProperty extends Property {
             return this;
         }
 
-        public Property get() {
+        public ComparativeProperty get() {
             return property;
         }
     }
@@ -48,5 +48,32 @@ public class ComparativeProperty extends Property {
 
     private void setCount(int count) {
         this.count = count;
+    }
+
+    private String getSign() {
+        switch (comparator) {
+            case Equal:
+                return "";
+
+            case Lower:
+                return "<";
+
+            case Greater:
+                return  ">";
+
+            case LowerOrEqual:
+                return  "<=";
+
+            case GreaterOrEqual:
+                return "=>";
+
+            default:
+                return "";
+        }
+    }
+
+    @Override
+    public String toString() {
+        return getSign() + count + " " + getName();
     }
 }
