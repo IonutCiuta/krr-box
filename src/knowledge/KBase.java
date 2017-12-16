@@ -1,5 +1,6 @@
 package knowledge;
 
+import knowledge.abox.ABox;
 import knowledge.tbox.Definition;
 import knowledge.tbox.TBox;
 import terms.concept.Concept;
@@ -11,6 +12,7 @@ import terms.property.QuantitativeProperty;
  */
 public class KBase {
     private TBox tBox = new TBox();
+    private ABox aBox = new ABox();
 
     private void setup() {
         Concept person = new Concept.Builder().named("Person").get();
@@ -47,16 +49,23 @@ public class KBase {
         Concept wife = new Concept.Builder().named("Wife").get();
         QuantitativeProperty hasHusbandMan = new QuantitativeProperty.Builder().named("hasHusband").existsFor(man).get();
         tBox.define(wife.getName(), new Definition.Builder().as(woman).and(hasHusbandMan).get());
+
+        aBox.assertThat(motherWithoutDaughter.getName(), "MARY");
+        aBox.assertThat(hasChildPerson.getName(), "MARY", "PETER");
+        aBox.assertThat(hasChildPerson.getName(), "MARY", "PAUL");
+        aBox.assertThat(father.getName(), "PETER");
+        aBox.assertThat(hasChildPerson.getName(), "PETER", "HARRY");
     }
 
     @Override
     public String toString() {
-        return tBox.toString();
+        return tBox + "\n" + aBox;
     }
 
     public static void main(String[] args) {
         KBase kBase = new KBase();
         kBase.setup();
+
         System.out.println(kBase);
     }
 }
