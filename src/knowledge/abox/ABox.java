@@ -21,4 +21,8 @@ public class ABox {
         assertions.forEach(a -> sb.append(a).append("\n"));
         return sb.toString();
     }
+
+    public List<Assertion> getAssertions() {
+        return assertions;
+    }
 }

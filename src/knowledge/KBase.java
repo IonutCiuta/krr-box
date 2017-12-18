@@ -7,6 +7,8 @@ import terms.concept.Concept;
 import terms.property.ComparativeProperty;
 import terms.property.QuantitativeProperty;
 
+import java.util.*;
+
 /**
  * ionutciuta24@gmail.com on 16.12.2017.
  */
@@ -57,6 +59,12 @@ public class KBase {
         aBox.assertThat(hasChildPerson.getName(), "PETER", "HARRY");
     }
 
+    public void applyInference() {
+        System.out.println(tBox.deriveFrom("MotherWithoutDaughter"));
+        System.out.println(tBox.deriveFrom("Grandmother"));
+        System.out.println(tBox.deriveFrom("Father"));
+    }
+
     @Override
     public String toString() {
         return tBox + "\n" + aBox;
@@ -65,6 +73,7 @@ public class KBase {
     public static void main(String[] args) {
         KBase kBase = new KBase();
         kBase.setup();
+        kBase.applyInference();
 
         System.out.println(kBase);
     }
